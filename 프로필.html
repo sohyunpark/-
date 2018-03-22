@@ -11,6 +11,7 @@
     <script>
     var $name= null;
     var $gender = null;
+    var $inputbox = null;
     var $selectboxYear = null;
     var $selectboxMonth = null;
     var $calender = null;
@@ -116,9 +117,12 @@
         }
       });
 
-      $email.on("change",function(e){
-        var value = $('.register-email-title').eq(1).val();
-        value += $('.register-email option:selected').text();
+      $email.on("change",function(){
+        var value = $('.register-email-title').eq(2).val();
+        var email = $('.register-email option:selected').text();
+        console.log(email);
+        value += email;
+        $("#email").val(email);
       })
 
       $(".register-id-check").on("click",function(){
