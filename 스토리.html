@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>당신의 영원한 친구 - 알라딘</title>
+    <meta name="keywords" content="알라딘 가상시뮬레이션">
+    <meta name="description" content="당신이 원하는 것, 모든지 이뤄드립니다.">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type='text/javascript' src='jquery-1.11.0.min.js'></script>
+    <script>
+    var $slides = null;
+    var $img = null;
+    var $script = null;
+    var $popup = null;
+    var $selectbtn = null;
+
+    function layer_popup(){
+
+      $popup = $("#layer1");        //레이어의 id를 $el 변수에 저장
+
+      $popup.fadeIn();
+
+      var $popupWidth = ~~($popup.outerWidth());
+      var $popupHeight = ~~($popup.outerHeight());
+      var docWidth = $(document).width();
+      var docHeight = $(document).height();
+
+      // 화면의 중앙에 레이어를 띄운다.
+      if ($popupHeight < docHeight || $popupWidth < docWidth) {
+        $popup.css({
+          marginTop: -$popupHeight /2,
+          marginLeft: -$popupWidth/2
+        })
+      }else{
+        $popup.css({top: 0, left: 0});
+      }
+
+      $el.find('a.btn-layerClose').click(function(){
+        $popup.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+        return false;
+      });
+    }
+
+    function ShowScript(num){
+      $script.css("display","none");
+      $script.eq(num).css("display","block");
+    }
+
+    function ShowAnimation(num){
+      if(num!=0){
+        $img.css("display","none");
+      }
+
+      $slides = $(".img-slide").eq(num);
+      $img = $slides.find('img');
+      $img.css("display","block");
+      $script = $slides.find('h1');
+      var scriptLength = $script.length;
+
+      var scriptCount = 0;
+      var timerId = setInterval(function(){
+        if(scriptCount == scriptLength){
+          clearInterval(timerId);
+        }
+        ShowScript(scriptCount);
+        scriptCount++;
+      },1000);
+    }
+
+    $(document).ready(function(){
+      var totalimg = $(".img-slide").length;
+      var image = 0;
+      var $selectbtn = $(".selectbtn");
+      var data = JSON.parse(sessionStorage.getItem('Info'));
+      console.log(data);
+      var str = data[0].value + "의 하루"
+      console.log(str);
+      $("#load").html(str);
+
+      $("html, body").animate({
+        scrollTop: 60
+      }, 2500);
+
+      $slides = $(".img-slide").eq(0);
+      $img = $slides.find('img');
+      $img.css("display","block");
+      $script = $slides.find('h1');
+
+      var timerId = setInterval(function(){
+        if(image == totalimg){
+          $slides = $(".img-slide").eq(0);
+          $img = $slides.find('img');
+          $img.css("display","block");
+          $script = $slides.find('h1');
+          $(".selectbar").css("display","block");
+          $("html, body").animate({
+            scrollTop: 120
+          }, 2000);
+          clearInterval(timerId);
+        }
+        ShowAnimation(image);
+        image++;
+      },5000);
+
+      $selectbtn.click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+      });
+
+      // 마우스 hovor  기능
+      $selectbtn.on("mouseover",function(){
+        $(this).css("width","40%");
+        $(this).css("height","50px");
+      })
+      $selectbtn.on("mouseout",function(){
+        $(this).css("width","30%");
+        $(this).css("height","40px");
+      })
+
+    });
+    </script>
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <header id="main-header">
+        <a href="메인.html">
+          <img id="logo-ramp" src="./image/magic-lamp.png" width="20px" height="20px"/>
+          <img id="logo-aladin" src="./image/aladin.png" />
+          <p id="master-title">Aladin</p>
+        </a>
+      </header>
+      <div id="content">
+        <!--  이미지 슬라이드 삽입 -->
+        <div id="sliderContainer">
+          <div class="story-slider">
+            <div class="img-slide">
+              <img src="./image/story_0.PNG" class="main-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:white" id="load"></h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_1.PNG" class="main-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:red">"월요일"</h1>
+                <h1 class="script" style="color:red">"또 시작이구만"</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_2.PNG" class="main-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:red">"입맛도 없어...."</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_3.PNG" class="main-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:red">"할일이 태산..."</h1>
+                <h1 class="script" style="color:red">"또 야근이다..."</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_4.PNG" class="main-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:white">"흑흑흑"</h1>
+                <h1 class="script" style="color:red">"더이상 이렇게 살고싶지않아!!!!!"</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_5.PNG" class="main-img" class="img-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:white">"똑똑"</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_6.PNG" class="main-img" class="img-img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:white">"??!!!!!!!???!!!!!!!!!!"</h1>
+              </div>
+            </div>
+            <div class="img-slide">
+              <img src="./image/story_7.PNG" class="main-img" id="effect_img"/>
+              <div class="text-slide">
+                <h1 class="script" style="color:blue">"HELLO"</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="selectbar">
+          <a href="#layer1"><img src="./image/select1.png" class="selectbtn"/></a>
+          <a href="#layer1"><img src="./image/select2.png" class="selectbtn"/></a>
+          <div id="layer1" class="pop-layer">
+            <div class="pop-container">
+              <div class="pop-conts">
+                <p class="ctxt mb20">알림<br>
+                저희 서비스를 이용해주셔서 감사합니다. <br>
+                알라딘은 언제나 당신의 곁에 있는 친구가 되겠습니다.<br><br>
+                당신 역시 알라딘의 친구가 되어주시겠습니까?</p>
+                <div class="btn-r">
+                  <a href="결제.html" class="btn-layerClose">OK</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div id="mask"></div>
+      <footer id="main-footer">
+        <div id="bottombar">
+          <div class="container">
+            <ul class="copyrightbar">
+              <li><a href="#">이용약관</a></li>
+              <li class="devider"></li>
+              <li><a href="#">서비스 안내</a></li>
+              <li class="devider"></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li class="devider"></li>
+              <li><a href="#">책임의 한계와 법적고지</a></li>
+              <li class="devider"></li>
+              <li><a href="#">TCOM 고객센터</a></li>
+            </ul>
+            <p class="copyright">본 콘텐츠의 저작권은 제공처 또는 TCOM Coperation에게 있으며 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dear My Friend Welcome - Aladin</title>
+    <meta name="keywords" content="알라딘 가상시뮬레이션">
+    <meta name="description" content="당신이 원하는 것, 모든지 이뤄드립니다.">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type='text/javascript' src='jquery-1.11.0.min.js'></script>
+    <script>
+      var slideIndex = 0;
+      var $startbtn = null;
+
+      function logoAnimation(){
+        var $ramp = $("#logo-ramp");
+        var $aladin = $("#logo-aladin")
+        $aladin.animate({
+          height: '+=550px',
+          width: '+=450px'
+        });
+        $aladin.animate({
+          height: '-=550px',
+          width: '-=450px'
+        });
+      }
+
+      function introanimation(){
+        var $slides = $('.img-slider');
+        var $dots = $('.dot');
+
+        $slides.each(function(){
+          $(this).css("display","none");
+        })
+          slideIndex++;
+          if (slideIndex > $slides.length) {
+            slideIndex = 1;
+          }
+          $dots.each(function(){
+            $(this).removeClass("active");
+          });
+
+          $slides.eq(slideIndex-1).css("display", "block");
+          $dots.eq(slideIndex-1).addClass("active");
+      }
+
+      $(document).ready(function(){
+        $startbtn = $("#startButton");
+
+        $slides = $(".img-slider").eq(0);
+        $slides.css("display","block");
+
+        setInterval(function(){
+          introanimation()
+      },3000);
+       logoAnimation();
+
+       $("html, body").animate({
+         scrollTop: 120
+       }, 4500);
+
+        $startbtn.on("click",function(){
+         location.replace("프로필.html");
+       });
+
+       $startbtn.on("mouseover",function(){
+         $(this).css("width","140px");
+         $(this).css("height","60px");
+       })
+       $startbtn.on("mouseout",function(){
+         $(this).css("width","130px");
+         $(this).css("height","50px");
+       })
+
+    });
+    </script>
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <header id="main-header">
+          <img id="logo-ramp" src="./image/magic-lamp.png" width="20px" height="20px"/>
+          <img id="logo-aladin" src="./image/aladin.png" />
+          <p id="master-title">Aladin</p>
+      </header>
+      <div id="content">
+        <!-- 소개 이미지 슬라이드 삽입 -->
+        <div id="sliderContainer">
+          <div class="img-slider fade">
+            <img src="./image/1.PNG" class="main-img"/>
+          </div>
+          <div class="img-slider fade">
+            <img src="./image/2.PNG" class="main-img"/>
+          </div>
+          <div class="img-slider fade">
+            <img src="./image/3.PNG" class="main-img" />
+          </div>
+          <div class="img-slider fade">
+            <img src="./image/4.PNG" class="main-img" />
+          </div>
+        </div>
+        <div class="dot-slider">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="startbar">
+          <!-- <a href="프로필.html"> -->
+            <img src="./image/start.png" id="startButton"/>
+          <!-- </a> -->
+        </div>
+      </div>
+      <footer id="main-footer">
+        <div id="bottombar">
+          <div class="container">
+            <ul class="copyrightbar">
+              <li><a href="#">이용약관</a></li>
+              <li class="devider"></li>
+              <li><a href="#">서비스 안내</a></li>
+              <li class="devider"></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li class="devider"></li>
+              <li><a href="#">책임의 한계와 법적고지</a></li>
+              <li class="devider"></li>
+              <li><a href="#">TCOM 고객센터</a></li>
+            </ul>
+            <p class="copyright">본 콘텐츠의 저작권은 제공처 또는 TCOM Coperation에게 있으며 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

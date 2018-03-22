@@ -1,0 +1,279 @@
+/* 초기화 */
+@@charset "UTF-8";
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",Dotum,"돋움",sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:focus, a:hover, button:hover,a:active, button:active {
+  background: #888;
+}
+input:focus, textarea:focus{
+  border: 1px solid blue;
+}
+li { list-style: none;}
+
+.hovor{
+  background-color: #e8e8e8;
+}
+
+/* 전체 바디 구성  */
+body{
+  background: #9A2EFE;
+}
+#page-wrapper{
+  margin: 0 auto;
+  width: 70%;
+}
+/* 헤더 공통 */
+#main-header{
+  margin: 0 auto;
+  height: 200px;
+  /* position: relative; */
+}
+#logo-ramp{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 34%;
+  top: 140px;
+}
+#logo-aladin{
+  position: absolute;
+  left: 370px;
+  height: 160px;
+  width: 160px;
+  z-index: 1000;
+}
+#master-title{
+  display: inline-block;
+  position: absolute;
+  margin: 0 0;
+  top: 50px;
+  left: 42%;
+  font-size: 70px;
+  font-weight: bold;
+}
+/* 본문 공통 */
+#content{
+  height: 500px;
+  text-align: center;
+}
+#sliderContainer {
+  display: inline-block;
+  height: 400px;
+}
+.main-img{
+  height: 400px;
+}
+/* 푸터 공통 */
+#main-footer{
+  margin: 50px 0;
+  height: 70px;
+}
+#bottombar{
+  text-align:center;
+}
+#main-footer ul li{
+  display: inline;
+  font-size: 12px;
+}
+.copyright{
+  padding: 0;
+  font-size: 10px;
+  color: #FFFF00;
+}
+/* 메인 홈페이지 - 메인 컨텐츠 */
+#sliderContainer .img-slider {
+  display: none;
+}
+.dot-slider{
+  text-align: center;
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active {
+  background-color: #717171;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+.startbar{
+  text-align: center;
+}
+#startButton{
+  display: inline-block;
+  margin-top: 40px;
+  width: 130px;
+  height: 50px;
+}
+/* 프로필.html 스타일 */
+#profile-input-form{
+  height: 340px;
+  border-radius: 5px;
+  border: 3px solid yellow;
+}
+fieldset{
+  border: 0px;
+  text-align: left;
+}
+#register-table {
+  width: 800px;
+  margin: 0 auto;
+}
+#register-table > tbody > tr > td {
+  height: 30px;
+}
+#nextButton {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  right: 20px;
+  float: right;
+}
+#calender{
+  width: 280px;
+  height: 300px;
+  border-spacing: 10px;
+  background-color: white;
+  border : 1px solid black;
+  display: none;
+}
+#calender tr > td:first-child{
+  color : red;
+}
+#calender tr > td:last-child{
+  color : blue;
+}
+#calender td{
+  border-width: 0px;
+  height:30px;
+  width:30px;
+  font-size: 20px;
+  text-align:center;
+}
+#calender td:hover {
+  background-color:#E6E6E6;
+}
+/* 스토리.html 스타일 */
+.img-slide img{
+  display: none;
+}
+.img .img{
+  position: absolute;
+  width: 58%;
+  top: 80%;
+  text-align: center;
+  z-index:2;
+}
+.img-slide .text-slide{
+  position: absolute;
+  width: 58%;
+  top: 80%;
+  text-align: center;
+  z-index: 3;
+}
+.intro-img{
+  width: 58%;
+}
+.script{
+  display: none;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 5;
+}
+.selectbar{
+  display: none;
+  margin-top: 30px;
+}
+.selectbtn{
+  display: inline-block;
+  padding: 10px;
+  width: 30%;
+  height: 40px;
+}
+.pop-layer .pop-container {
+  padding: 20px 25px;
+}
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+}
+.pop-layer .btn-r {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding-top: 10px;
+  border-top: 1px solid #DDD;
+  text-align: right;
+}
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #BF00FF;
+  z-index: 10;
+}
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 14px 0;
+  border: 1px solid #A901DB;
+  background-color: #A901DB;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+a.btn-layerClose:hover {
+  border: 1px solid #4C0B5F;
+  background-color: #4C0B5F;
+  color: #fff;
+}
+/* 결제.html */
+.description{
+  text-align: left;
+}
+.payment-name-description {
+  font-size: 13px;
+}
+.payment-form{
+  border-radius: 5px;
+  border: 3px solid yellow;
+}
+.paymentbar{
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+}
+.quantity_section{
+  height: 0px;
+  display: none;
+}
+.finishbtn{
+  width : 120px;
+  height: 30px;
+}
